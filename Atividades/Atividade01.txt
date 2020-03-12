@@ -12,16 +12,14 @@ e) Digite o comando ping 127.0.0.1. Qual foi o resultado?
 
 f) Utilize novamente o comando ping passando como parâmetro o endereço IP da sua estação. Qual foi o resultado?
 
-g) Digite o comando ping www.iesb.br. Qual foi o resultado?
+g) Resolva o endereço IP do site www.iesb.br através do comando nslookup.
 
+h) Utilize o comando ping para testar conectividade do site www.iesb.br.
 
-Uso do comando nslookup
+i) Execute o comando tracert www.iesb.br para verificar o roteamento de pacotes. Qual foi o resultado?
 
+j) Execute o comando tracert intranet.iesb.br. Qual foi o resultado?
 
-Uso do comando netstat
+k) Liste as conexões na sua estação através do comando netstat.
 
-
-Uso do comando ping.
-
-
-Uso do comando tracert
+k) Acesse pelo navegador o site www.iesb.br. Verifique a cona
