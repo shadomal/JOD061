@@ -1,24 +1,40 @@
-1. Uso do comandos de gerenciamento de rede.
+1. Uso do comando ipconfig.
 
 a) Abra o Prompt de Comando no Windows.
 
-b) Execute o comando ipconfig. Quais os endereços IPs da sua estação? Quais classes IP eles pertencem?
+b) Execute o comando ipconfig. Quais os endereços IPs da sua estação?
 
-c) Encontre os endereços de rede a partir da máscara definida no IPv4.
+c) Encontre os endereços IPv4 de rede a partir da máscara definida.
 
 d) Execute o comando ipconfig/all. Quais as informações foram apresentadas a mais?
+
+
+
+2. Uso do comando ping.
 
 e) Digite o comando ping 127.0.0.1. Qual foi o resultado?
 
 f) Utilize novamente o comando ping passando como parâmetro o endereço IP da sua estação. Qual foi o resultado?
 
+
+
+3. Uso do comando nslookup
+
 g) Resolva o endereço IP do site www.iesb.br através do comando nslookup.
 
 h) Utilize o comando ping para testar conectividade do site www.iesb.br.
 
+
+
+4. Uso do comando tracert
+
 i) Execute o comando tracert www.iesb.br para verificar o roteamento de pacotes. Qual foi o resultado?
 
 j) Execute o comando tracert intranet.iesb.br. Qual foi o resultado?
+
+
+
+5. Uso do comando netstat
 
 k) Liste as conexões na sua estação através do comando netstat.
 
