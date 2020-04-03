@@ -60,6 +60,14 @@ e) Execute o comando tracert helpdesk.iesb.br. Qual foi o resultado? O destino f
 
 5. Verificar as conexões estabelecidas pelo host.
 
-k) Liste as conexões na sua estação através do comando netstat.
+a) Execute o comando netstat. Qual foi o resultado?
 
-k) Acesse pelo navegador o site www.iesb.br. Verifique a cona
+b) Execute o comando netstat -n. Qual foi o resultado? Notou algo diferente?
+
+c) Execute o comando netstat -na. Qual foi o resultado? Notou algo diferente?
+
+d) Execute o comando netstat -nap TCP. Qual foi o resultado? Notou algo diferente?
+
+e) Execute o comando netstat -nap UDP. Qual foi o resultado? Notou algo diferente?
+
+f) Abra a página do IESB (www.iesb.br) no navegador. Tente identificar o socket criado através do comando netstat. Qual foi o resultado?
