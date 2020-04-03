@@ -12,6 +12,10 @@ e) Execute o comando ipconfig/release *Con*. Quai foi o resultado?
 
 f) Execute o comando ipconfig/renew. Qual foi o resultado?
 
+g) Execute o comando ipconfig/displaydns. Quai foi o resultado?
+
+h) Execute o comando ipconfig/flushdns em seguida o comando ipconfig/displaydns. Quai foi o resultado?
+
 
 
 2. Testar a conectividade física entre dois hosts.
