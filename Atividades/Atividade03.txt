@@ -1,0 +1,76 @@
+1. Configurar o VSCode para acessar o GitHub.
+
+a) Abra o aplicativo VSCode.
+
+b) Pressione as teclas Ctrl+Shift+P e selecione o comando Git: Clone. 
+
+c) Preencha a URL https://github.com/SEU-LOGIN/JOD61.git e pressione ENTER para clonar o repositório.
+
+d) Selecione a pasta C:\Users\SEU-LOGIN\Documentos para onde o repositório será clonado.
+
+e) Prossiga acionando a opção Open para abrir a pasta do repositório clonado.
+
+f) Pressione as teclas Ctrl+' para abrir um terminal.
+
+g) Configure o usuário e email do git.
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+
+
+2. Criar um projeto Unit.
+
+a) Abra o aplicativo UnityHub.
+
+b) Na aba Projects, crie um projeto Unity 2018 acionando a opção New.
+
+c) Prossiga atribuindo o template 3D e nome Atividade03 ao projeto.
+
+d) Verifique se a localização do projeto está indicando a pasta JOD061\Atividades. Senão estiver, atualize para o caminho correto (C:\Users\SEU-LOGIN\Documentos\JOD061\Atividades).
+
+e) Crie uma pasta Scripts e uma pasta Prefabs dentro da pasta Assets.
+
+
+
+3. Criar uma cena de lobby para o jogo multiplayer.
+
+a) Renomeie a cena SampleScene para LobbyScene.
+
+b) Crie um GameObject vazio com o nome Lobby Game.
+
+c) Adicione ao objeto Lobby Game os componentes Network Lobby Manager e Network Manager HUD.
+
+d) Ligue a cena LobbyScene com a propriedade Lobby Scene do componente Network Lobby Manager.
+
+e) Crie um cubo com o nome Player.
+
+f) Adicione ao objeto Player os componentes Network Identity e Network Transform.
+
+g) Ative a propriedade Local Player Authority no componente Network Identity. Atribua o valor máximo 
+
+h) Crie um Script na pasta Scripts com o nome PlayerController. Ligue o script ao objeto Player.
+
+i) Abra o script PlayerController.cs no VSCode.
+
+j) Faça a classe PlayerController herdar a classe NetworkBehaviour.
+
+
+
+4. Criar uma cena de player para o jogo multiplayer.
+
+h) Crie uma nova cena com o nome PlayScene salvando na pasta Assets\Scenes.
+
+i) Ligue a cena LobbyScene ao slot Lobby Scene e a cena PlayScene ao slot Play Scene, ambos do componente Network Lobby Manager.
+
+j) A
+
+
+
+5. Versionar o projeto Unity no GitHub.
+
+a) No VSCode, pressione as teclas Ctrl+Shift+G para acessar o painel do Git. Em seguida, clique em Stage All.
+
+b) Efetive o commit acionando a opção Commit All. Não esqueça de por um comentário ao commit (Ex.: Criando o projeto Atividade03). 
+
+c) Envie os arquivos versionados para o git remoto acionando a opção Push. Informe usuário/senha e acione a opção Sign in.
