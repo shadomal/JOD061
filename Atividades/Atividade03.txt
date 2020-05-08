@@ -37,9 +37,9 @@ e) Crie uma pasta Scripts e uma pasta Prefabs dentro da pasta Assets.
 
 a) Renomeie a cena SampleScene para LobbyScene.
 
-b) Crie um GameObject vazio com o nome Lobby Manager.
+b) Crie um GameObject vazio com o nome Network Manager.
 
-c) Adicione ao objeto Lobby Manager os componentes Network Lobby Manager e Network Manager HUD.
+c) Adicione ao objeto Network Manager os componentes Network Lobby Manager e Network Manager HUD.
 
 d) Ligue a cena LobbyScene com a propriedade Lobby Scene do componente Network Lobby Manager.
 
@@ -94,7 +94,7 @@ f) Abra a cena LobbyScene, e ligue a cena PlayScene com a propriedade Lobby Scen
 
 a) Adicione as cenas LobbyScene e PlayScene nessa ordem para a geração da build do jogo.
 
-b) Gere uma build do jogo com a resolução 800x600 em modo janela (Windowed). Inicie o jogo no modo servidor.
+b) Gere uma build do jogo com a resolução 640x480 em modo janela (Windowed). Inicie o jogo no modo servidor.
 
 c) Execute a cena LobbyScene e inicie o jogo no modo cliente.
 
