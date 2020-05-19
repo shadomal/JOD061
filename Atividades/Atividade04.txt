@@ -16,27 +16,23 @@ g) Crie uma pasta Scripts e uma pasta Prefabs dentro da pasta Assets.
 
 
 
-2. Criar uma cena para um lobby multiplayer.
+2. Criar uma cena para um jogo multiplayer server authority.
 
-a) Renomeie a cena SampleScene para LobbyScene.
+a) Renomeie a cena SampleScene para PlayScene.
 
-b) Crie um GameObject vazio com o nome Network Lobby Manager.
+b) Crie um GameObject vazio com o nome Network Manager.
 
-c) Adicione ao objeto Network Lobby Manager os componentes Network Lobby Manager e Network Manager HUD.
+c) Adicione ao objeto Network Manager os componentes Network Manager e Network Manager HUD.
 
-d) Ligue a cena LobbyScene com a propriedade Lobby Scene do componente Network Lobby Manager.
+d) Crie um cubo com o nome Player.
 
-e) Crie um cubo com o nome Player.
+e) Adicione ao objeto Player os componentes Network Identity e Network Transform.
 
-f) Adicione ao objeto Player os componentes Network Identity e Network Transform.
+f) Crie um Script na pasta Scripts com o nome PlayerController. Ligue o script ao objeto Player.
 
-g) Marque a propriedade Local Player Authority no componente Network Identity. Atribua o valor máximo para a propriedade Network Send Rate no componente Network Transform.
+g) Abra o script PlayerController.cs no VSCode.
 
-h) Crie um Script na pasta Scripts com o nome PlayerController. Ligue o script ao objeto Player.
-
-i) Abra o script PlayerController.cs no VSCode.
-
-j) Faça a classe PlayerController herdar a classe NetworkBehaviour e usar o pacote UnityEngine.Networking.
+j) Faça a classe PlayerController herdar a classe NetworkBehaviour e usar o pacote Mirror.
 
 k) Declare duas variáveis float na classe PlayerController. A primeira deve ser chamar moveSpeed e ser inicializada com o valor 0.2f. A segunda deve se chamar moveRotation e ser inicializada com o valor 20.
 
