@@ -55,33 +55,61 @@ e) No método Start da classe PlayerController, faça o objeto alterar a cor de 
 Material material = GetComponent<Renderer>().material;
 material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
 
-e) No método Update da classe PlayerController, faça o objeto rotacionar no eixo Y quando for pressionado as setas na horizontal e se movimentar no eixo Z quando for pressionado as setas na vertical.
+f) No método Update da classe PlayerController, faça o objeto rotacionar no eixo Y quando for pressionado as setas na horizontal, se movimentar no eixo Z quando for pressionado as setas na vertical e disparar um projetil quando for pressionado a tecla ESPAÇO.
 
-        if (isLocalPlayer)
-        {
-            transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed);
-            transform.Rotate(0, Input.GetAxis("Horizontal") * moveRotation, 0);
-        }
+if (!isLocalPlayer)
+    return;
 
-f) Na Unity, arraste o objeto Player para dentro da pasta Prefabs. Em seguida apague o objeto da cena.
+transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed);
+transform.Rotate(0, Input.GetAxis("Horizontal") * moveRotation, 0);
 
-g) Ligue o prefab Player com a propriedade Game Player Prefab do Network Lobby Manager.
+if (Input.GetKeyUp(KeyCode.Space))
+    CmdAtirar();
 
+g) Crie um método CmdAtirar que cria uma instância do Projetil e seja exibida no jogo.
 
+[Command]
+void CmdAtirar()
+{
+   GameObject projetil = Instantiate(bala, arma.position, transform.rotation);
+   NetworkServer.Spawn(projetil);
+}
 
-3. Criar uma cena para realizar uma partida multiplayer.
+h) Abra o script ProjetilController.cs no VSCode. Faça a classe ProjetilController herdar a classe NetworkBehaviour e usar o pacote Mirror.
 
-a) Crie uma nova cena com o nome PlayScene salvando na pasta Assets\Scenes.
+i) No método Start da classe ProjetilController, faça o objeto ser destruido após 1s.
 
-b) Ligue a cena PlayScene com a propriedade Lobby Scene do componente Network Lobby Manager.
+Destroy(gameObject, 1);
 
-c) Crie um GameObject vazio com o nome Lobby Player.
+j) Declare uma variável float na classe ProjetilController. Ela deve se chamar moveSpeed e ser inicializada com o valor 20f.
 
-d) Adicione ao objeto Lobby Player o componentes Network Lobby Player.
+k) No método Update da classe ProjetilController, faça o objeto se movimentar no eixo Z aplicando a variável moveSpeed.
 
-e) Arraste o objeto Lobby Player para dentro da pasta Prefabs. Em seguida apague o objeto da cena.
+void Update()
+{
+   transform.Translate(0, 0, Time.deltaTime * 20f);
+}
 
-f) Abra a cena LobbyScene, e ligue a cena PlayScene com a propriedade Lobby Scene do componente Network Lobby Manager.
+l) Crie um método OnTriggerEnter para destruir o projetil e destruir o objeto colidido.
+
+[ServerCallback]
+private void OnTriggerEnter(Collider other)
+{
+   NetworkServer.Destroy(gameObject);
+   NetworkServer.Destroy(other.gameObject);
+}
+
+m) Na Unity, adicione o script PlayerController no objeto Player e adicione o script PlayerController no objeto Projetil.
+
+n) Arraste os objetos Player e Projetil para a pasta Prefabs. Em seguida apague os objetos da cena.
+
+o) Ligue o prefab Projetil com a propriedade projetilPrefab e ligue o objeto da saída do projetil no Player a propriedade projetilPosition.
+
+p) Ligue o prefab Player com a propriedade Player Prefab do componente Network Manager.
+
+q) Altere a propriedade Player Spawn Method para Round Robin.
+
+r) Registre o prefrab Projeti na propriedade Registered Spawnable Prefabs do componente Network Manager.
 
 
 
