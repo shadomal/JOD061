@@ -30,6 +30,28 @@ f) Cole o AppID criado na Photon Cloud.
 
 
 
+3. Criar um script para conectar na Photon Clound.
+
+a) Crie um GameObject vazio com o nome Network Manager.
+
+b) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Network Manager.
+
+c) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar o pacote Photon.Pun.
+
+d) No método Start da classe PhotonConnection, faça imprimir a mensagem "Conectando ao servidor...".
+
+e) Ainda o método Start, atribua um valor de versão para a propridedade PhotonNetwork.GameVersion e faça uma chamada o método PhotonNetwork.ConnectUsingSettings.
+
+f) No método OnConnectedToMaster faça imprimir a mensagem "Conectado!".
+
+g) No método OnDisconnected faça imprimir a mensagem "Disconectado. Motivo: " + cause.ToString().
+
+e) Execute a cena na Unity. Qual foi o resultado na aba Console?
+
+f) Interrompa a cena na Unity. Qual foi o resultado na aba Console?
+
+
+
 
 
 5. Versionar o projeto Unity no GitHub.
