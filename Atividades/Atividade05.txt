@@ -32,9 +32,9 @@ f) Cole o AppID criado na Photon Cloud.
 
 3. Criar um script para conectar na Photon Clound.
 
-a) Crie um GameObject vazio com o nome Network Manager.
+a) Crie um GameObject vazio com o nome Photon Network Manager.
 
-b) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Network Manager.
+b) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Photon Network Manager.
 
 c) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar o pacote Photon.Pun.
 
