@@ -30,7 +30,7 @@ f) Cole o AppID criado na Photon Cloud.
 
 
 
-3. Criar um script para conectar na Photon Clound.
+3. Criar um script para conectar na Photon Cloud.
 
 a) Crie um GameObject vazio com o nome Photon Network Manager.
 
@@ -38,19 +38,25 @@ b) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script a
 
 c) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar o pacote Photon.Pun.
 
-d) No método Start da classe PhotonConnection, faça imprimir a mensagem "Conectando ao servidor...".
+d) Declare duas variáveis string na classe PhotonConnection. A primeira deve ser chamar gameVersion e ser inicializada com o valor "0.0.1". A segunda deve se chamar nickname e ser inicializada com "".
 
-e) Ainda o método Start, atribua um valor de versão para a propridedade PhotonNetwork.GameVersion e faça uma chamada o método PhotonNetwork.ConnectUsingSettings.
+e) No método Start da classe PhotonConnection, faça imprimir a mensagem "Conectando ao servidor...".
 
-f) No método OnConnectedToMaster faça imprimir a mensagem "Conectado!".
+f) Ainda no método Start, atribua o valor da variável gameVersion à propridedade PhotonNetwork.GameVersion e o valor da variável nickname à propriedade PhotonNetwork.NickName.
 
-g) No método OnDisconnected faça imprimir a mensagem "Disconectado. Motivo: " + cause.ToString().
+g) Ainda no método Start, faça uma chamada o método PhotonNetwork.ConnectUsingSettings.
 
-e) Execute a cena na Unity. Qual foi o resultado na aba Console?
+h) No método OnConnectedToMaster faça imprimir a mensagem "Jogador " + PhotonNetwork.LocalPlayer.NickName + " está conectado!".
 
-f) Interrompa a cena na Unity. Qual foi o resultado na aba Console?
+i) No método OnDisconnected faça imprimir a mensagem "Disconectado. Motivo: " + cause.ToString().
+
+j) Execute a cena na Unity. Qual foi o resultado na aba Console?
+
+k) Interrompa a cena na Unity. Qual foi o resultado na aba Console?
 
 
+
+4. Criar uma room na Photon Cloud.
 
 
 
