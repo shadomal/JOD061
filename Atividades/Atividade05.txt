@@ -1,0 +1,41 @@
+1. Criar uma conta na Photon Cloud.
+
+a) Abra o navegador e acesse a url www.photonengine.com.
+
+b) Crie uma conta na Photon Cloud acessando a opção Sign In. Uma mensagem será enviada para email para cadastar uma senha.
+
+c) Faça o login na Photon Cloud com sua conta.
+
+d) Crie um novo aplicativo acessando CREATE A NEW APP.
+
+e) Selecione no campo tipo o valor Photon PUN. Defina um noma para sua aplicação. Por fim, acionar a opção CREATE.
+
+f) Copie o AppID para ser utilizado na Unity.
+
+
+
+2. Criar um projeto Unit.
+
+a) Abra o aplicativo UnityHub.
+
+b) Na aba Projects, crie um projeto Unity 2019 acionando a opção New.
+
+c) Prossiga atribuindo o template 3D e nome Atividade05 ao projeto.
+
+d) Verifique se a localização do projeto está indicando a pasta JOD061\Atividades. Senão estiver, atualize para o caminho correto (C:\Users\SEU-LOGIN\Documentos\JOD061\Atividades).
+
+e) Acesse a Asset Store e procure por PUN2 - FREE. Importe o pacote na Unity. 
+
+f) Cole o AppID criado na Photon Cloud.
+
+
+
+
+
+5. Versionar o projeto Unity no GitHub.
+
+a) No VSCode, pressione as teclas Ctrl+Shift+G para acessar o painel do Git. Em seguida, clique em Stage All.
+
+b) Efetive o commit acionando a opção Commit All. Não esqueça de por um comentário ao commit (Ex.: Criando o projeto Atividade05). 
+
+c) Envie os arquivos versionados para o git remoto acionando a opção Push. Informe usuário/senha e acione a opção Sign in.
