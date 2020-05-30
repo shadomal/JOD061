@@ -58,6 +58,37 @@ k) Interrompa a cena na Unity. Qual foi o resultado na aba Console?
 
 4. Criar uma room na Photon Cloud.
 
+a) Dentro da classe PhotonConnection declare uma variável roomName inicializando com o valor "JOD061".
+
+b) No método OnConnectedToMaster verifique se não foi criada a room nomeada pela variável roomName.
+
+c) Se não existir a room, crie uma variável options incializando com uma instância de RoomOptions. Atribua a propriedade maxPlayers o valor 4.
+
+RoomOptions options = new RoomOptions();
+options.MaxPlayers = 4;
+
+d) Faça uma chamada ao método PhotonNetwork.JoinOrCreateRoom passando como parâmetros a variável roomName, a variável options e o tipo de lobby padrão.
+
+PhotonNetwork.JoinOrCreateRoom(roomName, options, TypedLobby.Default);
+
+e) Se existir a room, faça a chamada ao método PhotonNetwork.JoinRoom passando a variável roomName.
+
+PhotonNetwork.JoinRoom(roomName);
+
+f) No método OnCreatedRoom da classe PhotonConnection faça imprimir a mensagem "Criada a sala " + roomName. 
+
+g) Ainda no método OnCreatedRoom faça a chamada PhotonNetwork.JoinRoom passando a variável roomName.
+
+h) No método OnPlayerEnteredRoom() da classe PhotonConnection faça imprimir a mensagem "Jogador " + player.NickName + " entrou na sala " + roomName.
+
+i) No método OnPlayerLeftRoom da classe PhotonConnection faça imprimir a mensagem "Jogador " + player.NickName + " saiu da sala " + roomName.
+
+j) Gere uma build do jogo com a resolução 640x480 em modo janela (Windowed). Qual foi o resultado?
+
+k) Altere a propriedade NickName do script PhotonConnection e execute a cena pelo Unity. Qual foi o resultado?
+
+l) Pare a execução do jogo.
+
 
 
 5. Versionar o projeto Unity no GitHub.
