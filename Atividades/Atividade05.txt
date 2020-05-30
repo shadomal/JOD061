@@ -38,17 +38,30 @@ b) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script a
 
 c) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar os pacotes Photon.Pun e Photon.Runtime.
 
-d) Declare duas variáveis string na classe PhotonConnection. A primeira deve ser chamar gameVersion e ser inicializada com o valor "0.0.1". A segunda deve se chamar nickname e ser inicializada com "".
+d) Declare duas variáveis string na classe PhotonConnection. A primeira deve ser chamar gameVersion e ser inicializada com o valor "0.0.1". A segunda deve se chamar nickname e ser inicializada com "Player".
 
 e) No método Start da classe PhotonConnection, faça imprimir a mensagem "Conectando ao servidor...".
 
-f) Ainda no método Start, atribua o valor da variável gameVersion à propridedade PhotonNetwork.GameVersion e o valor da variável nickname à propriedade PhotonNetwork.NickName.
+Debug.Log("Conectando ao servidor...", this);
+
+f) Ainda no método Start, atribua o valor da variável gameVersion à propridedade PhotonNetwork.GameVersion e o valor da variável nickname mais Random.Range(0, 9999) à propriedade PhotonNetwork.NickName.
+
+PhotonNetwork.GameVersion = gameVersion;
+PhotonNetwork.NickName = nickName + Random.Range(0, 9999);
 
 g) Ainda no método Start, faça uma chamada o método PhotonNetwork.ConnectUsingSettings.
 
-h) No método OnConnectedToMaster faça imprimir a mensagem "Jogador " + PhotonNetwork.LocalPlayer.NickName + " está conectado!".
+h) No método OnConnectedToMaster faça imprimir a mensagem "Conectado!".
 
-i) No método OnDisconnected faça imprimir a mensagem "Disconectado. Motivo: " + cause.ToString().
+public override void OnConnectedToMaster() {
+   Debug.Log("Conectado!", this);
+}
+
+i) No método OnDisconnected faça imprimir a mensagem "Disconectado!".
+
+public override void OnDisconnected(Photon.Realtime.DisconnectCause cause) {
+   Debug.Log("Desconectado!");
+}
 
 j) Execute a cena na Unity. Qual foi o resultado na aba Console?
 
@@ -60,32 +73,42 @@ k) Interrompa a cena na Unity. Qual foi o resultado na aba Console?
 
 a) Dentro da classe PhotonConnection declare uma variável roomName inicializando com o valor "JOD061".
 
-b) No método OnConnectedToMaster verifique se não foi criada a room nomeada pela variável roomName.
+b) No método OnConnectedToMaster verifique se não foi criada alguma room.
 
-c) Se não existir a room, crie uma variável options incializando com uma instância de RoomOptions. Atribua a propriedade maxPlayers o valor 4.
+if (PhotonNetwork.CountOfRooms == 0) {
+} else {
+}
+
+c) Se não existir a room, crie uma variável options incializando com uma instância de RoomOptions. Atribua a propriedade MaxPlayers o valor 4.
 
 RoomOptions options = new RoomOptions();
 options.MaxPlayers = 4;
 
-d) Faça uma chamada ao método PhotonNetwork.JoinOrCreateRoom passando como parâmetros a variável roomName, a variável options e o tipo de lobby padrão.
+d) Ainda se não exister a room, faça uma chamada ao método PhotonNetwork.JoinOrCreateRoom passando como parâmetros a variável roomName, a variável options e o tipo de lobby padrão.
 
 PhotonNetwork.JoinOrCreateRoom(roomName, options, TypedLobby.Default);
 
-e) Se existir a room, faça a chamada ao método PhotonNetwork.JoinRoom passando a variável roomName.
+e) Se existir uma room, faça a chamada ao método PhotonNetwork.JoinRoom passando a variável roomName.
 
 PhotonNetwork.JoinRoom(roomName);
 
-f) No método OnCreatedRoom da classe PhotonConnection faça imprimir a mensagem "Criada a sala " + roomName. 
+f) No método OnCreatedRoom da classe PhotonConnection faça imprimir a mensagem "Criada a sala X". 
 
-g) Ainda no método OnCreatedRoom faça a chamada PhotonNetwork.JoinRoom passando a variável roomName.
+public override void OnCreatedRoom() {
+  Debug.Log("Criada a sala " + roomName);
+}
 
-h) No método OnPlayerEnteredRoom() da classe PhotonConnection faça imprimir a mensagem "Jogador " + player.NickName + " entrou na sala " + roomName.
+g) Ainda no método OnCreatedRoom faça imprimir a mensagem "Jogador N entrou na sala X (numero de jogadores na sala)".
 
-i) No método OnPlayerLeftRoom da classe PhotonConnection faça imprimir a mensagem "Jogador " + player.NickName + " saiu da sala " + roomName.
+Debug.Log("Jogador " + PhotonNetwork.LocalPlayer.NickName + " entrou na sala " + roomName + " (" + PhotonNetwork.CurrentRoom.PlayerCount + ")");
 
-j) Gere uma build do jogo com a resolução 640x480 em modo janela (Windowed). Qual foi o resultado?
+h) No método OnPlayerEnteredRoom() da classe PhotonConnection faça imprimir a mensagem a mensagem "Jogador N entrou na sala X (numero de jogadores na sala)"..
 
-k) Altere a propriedade NickName do script PhotonConnection e execute a cena pelo Unity. Qual foi o resultado?
+i) No método OnPlayerLeftRoom da classe PhotonConnection faça imprimir a mensagem a mensagem "Jogador N saiu da sala X (numero de jogadores na sala)"..
+
+j) Gere uma build do jogo com a resolução 640x480 em modo janela (Windowed), sem executar.
+
+k) Execute a cena pelo Unity. Execuute a build pelos menos 5 vezes. Qual foi o resultado?
 
 l) Pare a execução do jogo.
 
