@@ -36,7 +36,7 @@ a) Crie um GameObject vazio com o nome Photon Network Manager.
 
 b) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Photon Network Manager.
 
-c) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar o pacote Photon.Pun.
+c) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar os pacotes Photon.Pun e Photon.Runtime.
 
 d) Declare duas variáveis string na classe PhotonConnection. A primeira deve ser chamar gameVersion e ser inicializada com o valor "0.0.1". A segunda deve se chamar nickname e ser inicializada com "".
 
