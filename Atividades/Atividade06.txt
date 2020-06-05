@@ -1,0 +1,108 @@
+1. Criar um projeto Unit.
+
+a) Abra o aplicativo UnityHub.
+
+b) Na aba Projects, crie um projeto Unity 2019 acionando a opção New.
+
+c) Prossiga atribuindo o template 3D e nome Atividade06 ao projeto.
+
+d) Verifique se a localização do projeto está indicando a pasta JOD061\Atividades. Senão estiver, atualize para o caminho correto (C:\Users\SEU-LOGIN\Documentos\JOD061\Atividades).
+
+e) Acesse a Asset Store e procure por PUN2 - FREE. Importe o pacote na Unity. 
+
+f) Cole o AppID criado na Photon Cloud.
+
+g) Crie uma pasta Scripts, uma pasta Prefabs e uma pasta Resources dentro da pasta Assets.
+
+
+
+2. Criar uma cena de entrada do jogo.
+
+a) Renomeie a cena SampleScene para LobbyScene.
+
+b) Crie um objeto Canvas contendo um componente Text, um componente InputField e um componente Button. 
+
+c) Faça o componente Text exibir o texto Seu Nome, o componente InputField exibir a dica Digite ser nome e o componente Button exibir o texto Jogar.
+
+d) Crie um GameObject vazio com o nome Photon Network Manager.
+
+e) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Photon Network Manager.
+
+f) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar os pacotes Photon.Pun e Photon.Runtime.
+
+g) Declare uma variável Canvas formulario, uma variável string gameVersion, uma variável string roomName e uma variável inteiro maxPlayers na classe PhotonConnection.
+
+h) Implemente o método Awave alterando a propriedade AutomaticallySyncScene para true.
+
+void Awake() {
+ 	PhotonNetwork.AutomaticallySyncScene = true;
+}
+
+i) Implemente o método Connect para fazer a conexão com o Photon Clound. Se o PhotonNetwork não está conectado estabeleça uma conexão atribuindo o valor de gameVersion e chamando o método ConnectUsingSettings. Se estiver conectado, entre em uma sala através do método JoinRoom.
+
+public void Connect() {   
+   if (!PhotonNetwork.isConnecting) {
+        PhotonNetwork.NickName =  // fazer pegar o nome do inputfield
+        PhotonNetwork.GameVersion = this.gameVersion;
+				PhotonNetwork.ConnectUsingSettings();
+   } else {
+       PhotonNetwork.JoinRoom(this.rooName);
+   }
+}
+
+j) Implemente o método OnConnectedToMaster para entrar ou criar uma room após estabelecer a conexão com o Photon.
+
+RoomOptions options = new RoomOptions();
+options.MaxPlayers = this.maxPlayers;
+PhotonNetwork.JoinOrCreateRoom(this.roomName, options, TypedLobby.Default);
+
+k) Implemente o método OnJoinedRoom para carregar a cena do jogo.
+
+public override void OnJoinedRoom() {
+	PhotonNetwork.LoadLevel("GameScene");
+}
+
+l) Implemente o método OnDisconnected para exibir a cena de entraga após perder a conexão com o Photon.
+
+public override void OnDisconnected(DisconnectCause cause)
+	PhotonNetwork.LoadLevel("LobbyScene");  
+}
+
+m) Na Unity associe o componente Canvas a propriedade formulario do script PhotonConnection.
+
+
+
+
+3. Criar uma cena do jogo.
+
+a) Crie uma nova cena com o nome de GameScene.
+
+a) Crie um GameObject vazio com o nome Network Manager.
+
+c) Crie um Plane para a cena do jogo. Ajuste a posição da câmera para ter uma visão do plano como em uma trasmissão de um jogo de tênis.
+
+d) Crie um GameObject vazio com o nome Player1 e outro com o nome Player2. Posicione-os sob o plano de modo que fiquem em lados opostos.
+
+e) Adicione aos objetos Player1 e Player2 o componente NetworkStartPosition.
+
+f) Crie um Cube com o nome Player.
+
+g) Adicione ao objeto Player os componentes Network Identity, Network Transform e Ridigbody. Desative a ação da gravidade e fixe a rotação do objeto nos eixos X, Y e Z.
+
+h) Adicione ao objeto Player um GameObject vazio para representar a saída do projétil. Posicione-o na frente do objeto de modo que fique a uma distância de 1 no eixo Z.
+
+i) Crie uma Sphere com o nome Projetil. Atribua na escala X, Y e X o valor 0.15.
+
+j) Adicione ao objeto Projetil os componentes NetworkIdentity e Rigidbody. Desative a ação da gravidade e ative a propriedade isTrigger no componente Sphere Collider.
+
+
+
+
+
+4. Versionar o projeto Unity no GitHub.
+
+a) No VSCode, pressione as teclas Ctrl+Shift+G para acessar o painel do Git. Em seguida, clique em Stage All.
+
+b) Efetive o commit acionando a opção Commit All. Não esqueça de por um comentário ao commit (Ex.: Criando o projeto Atividade06). 
+
+c) Envie os arquivos versionados para o git remoto acionando a opção Push. Informe usuário/senha e acione a opção Sign in.
