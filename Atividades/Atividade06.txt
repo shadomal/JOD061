@@ -147,9 +147,11 @@ void Awake() {
   photonView = GetComponent<PhotonView>();
 }
 
-r) Implemente o método Update para rotacionar o objeto no eixo Y quando for pressionado as setas na horizontal e se movimentar no eixo Z quando for pressionado as setas na vertical.
+r) Implemente o método Update para rotacionar o objeto no eixo Y quando for pressionado as setas na horizontal e se movimentar no eixo Z quando for pressionado as setas na vertical, se o objeto Player pertencer ao jogador.
 
 void Update()  {
+   if (!photonView.IsMine)
+      return;
    transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed);
    transform.Rotate(0, Input.GetAxis("Horizontal") * moveRotation, 0);
 }
