@@ -92,17 +92,63 @@ a) Crie uma nova cena com o nome de GameScene.
 
 b) Crie um objeto Canvas contendo um componente Button. Posicione o botão no canto superior esquerdo da tela e faça ele exibir o texto Sair.
 
+c) Crie um GameObject vazio com o nome Game Manager.
 
-c) Crie um Cube com o nome Player.
+d) Crie na pasta Scripts um script com o nome GameController. Ligue o script ao objeto Game Manager.
 
-d) Adicione ao objeto Player os componentes Photon View, Photon Transform View e Ridigbody. Desative a ação da gravidade e fixe a rotação do objeto nos eixos X, Y e Z.
+e) Abra o script GameController.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar os pacotes Photon.Pun, Photon.Realtime e UnityEngine.SceneManagement.
 
-h)
+f) Declare uma variável GameObject playerPrefab na classe GameController.
 
-b) Crie um GameObject vazio com o nome Game Manager.
+g) Implemente o método Start para que verifique se o jogo está conectado ao Photon. Se não estiver carregue a cena LobbyScene. Se estiver crie uma instância do playerPrefab no jogo.
 
+void Start() {
+  if (!PhotonNetwork.IsConnected) {
+     SceneManager.LoadScene("LobbyScene");
+     return;
+  }
 
+  PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(Random.Range(-5f, 5f), 0f, 0f), Quaternion.identity, 0);
+}
 
+h) Implemente o método Disconnect para sair do jogo.
+
+public void Disconnect() {
+   PhotonNetwork.LeaveRoom();
+}
+
+i) Implemente o método OnLeftRoom para desconectar do Photon.
+
+ public override void OnLeftRoom() {
+   PhotonNetwork.Disconnect();
+}
+
+j) Implmente o método OnDisconnected para carregar a cena LobbyScene.
+
+public override void OnDisconnected(DisconnectCause cause) {
+   SceneManager.LoadScene("LobbyScene");
+}
+
+k) Na Unity associe o evento On Click do componente Button ao componente Game Manager para que seja executado o método GameController.Disconnect.
+
+l) Crie um Cube com o nome Player.
+
+m) Adicione ao objeto Player os componentes Photon View, Photon Transform View e Ridigbody. Desative a ação da gravidade e fixe a rotação do objeto nos eixos X, Y e Z.
+
+n) Crie na pasta Scripts um script com o nome PlayerController. Ligue o script ao objeto Player.
+
+o) Abra o script PlayerController.cs no VSCode e declare duas variáveis float. A primeira deve ser chamar moveSpeed e ser inicializada com o valor 0.2f. A segunda deve se chamar moveRotation e ser inicializada com o valor 20.
+
+p) Implemente o Update para rotacionar o objeto no eixo Y quando for pressionado as setas na horizontal e se movimentar no eixo Z quando for pressionado as setas na vertical.
+
+void Update()  {
+   transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed);
+   transform.Rotate(0, Input.GetAxis("Horizontal") * moveRotation, 0);
+}
+
+q) Na Unity, arraste o objeto Player para dentro da pasta Resources. Em seguida apague o objeto da cena.
+
+r) Associe o resource Player com a propriedade Player Prefab do Game Manager.
 
 
 
