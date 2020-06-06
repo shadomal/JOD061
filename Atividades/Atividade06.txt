@@ -137,22 +137,44 @@ m) Adicione ao objeto Player os componentes Photon View, Photon Transform View e
 
 n) Crie na pasta Scripts um script com o nome PlayerController. Ligue o script ao objeto Player.
 
-o) Abra o script PlayerController.cs no VSCode e declare duas variáveis float. A primeira deve ser chamar moveSpeed e ser inicializada com o valor 0.2f. A segunda deve se chamar moveRotation e ser inicializada com o valor 20.
+o) Abra o script PlayerController.cs no VSCode e faça a classe usar o pacotes Photon.Pun.
 
-p) Implemente o Update para rotacionar o objeto no eixo Y quando for pressionado as setas na horizontal e se movimentar no eixo Z quando for pressionado as setas na vertical.
+p) Declare uma variável float moveSpeed inicializada com o valor 0.2f, uma variável float moveRotation inicializada com o valor 20 e uma variável PhotonView photonView.
+
+q) Implemente o métido Awake para inicializar a variavel photonView com o componente PhotonView do Player.
+
+void Awake() {
+  photonView = GetComponent<PhotonView>();
+}
+
+r) Implemente o método Update para rotacionar o objeto no eixo Y quando for pressionado as setas na horizontal e se movimentar no eixo Z quando for pressionado as setas na vertical.
 
 void Update()  {
    transform.Translate(0, 0, Input.GetAxis("Vertical") * moveSpeed);
    transform.Rotate(0, Input.GetAxis("Horizontal") * moveRotation, 0);
 }
 
-q) Na Unity, arraste o objeto Player para dentro da pasta Resources. Em seguida apague o objeto da cena.
+s) Na Unity, arraste o objeto Player para dentro da pasta Resources. Em seguida apague o objeto da cena.
 
-r) Associe o resource Player com a propriedade Player Prefab do Game Manager.
+t) Associe o resource Player com a propriedade Player Prefab do Game Manager.
 
 
 
-4. Versionar o projeto Unity no GitHub.
+4. Executar o jogo multiplayer.
+
+a) Adicione as cenas LobbyScene e GameScene nessa ordem para a geração da build do jogo.
+
+b) Gere uma build do jogo com a resolução 640x480 em modo janela (Windowed). Inicie o jogo com um jogador.
+
+c) Execute a cena LobbyScene e inicie o jogo como outro jogador.
+
+d) Faça a movimentação do objeto em ambos jogadores e observe o resultado.
+
+e) Pare a execução do jogo.
+
+
+
+5. Versionar o projeto Unity no GitHub.
 
 a) No VSCode, pressione as teclas Ctrl+Shift+G para acessar o painel do Git. Em seguida, clique em Stage All.
 
