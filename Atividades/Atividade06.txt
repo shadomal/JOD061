@@ -20,53 +20,69 @@ g) Crie uma pasta Scripts e uma pasta Resources dentro da pasta Assets.
 
 a) Renomeie a cena SampleScene para LobbyScene.
 
-b) Crie um objeto Canvas contendo um componente Text, um componente InputField e um componente Button. 
+b) Altere a propriedade Clear Flags da Camera para Solid Color.
 
-c) Faça o componente Text exibir o texto Seu Nome, o componente InputField exibir a dica Digite um nome e o componente Button exibir o texto Jogar.
+c) Crie um objeto Canvas contendo um componente Text, um componente InputField e um componente Button. Ajustes de modo a ficar uma tela de login centralizada.
 
-d) Crie um GameObject vazio com o nome Photon Network Manager.
+d) Faça o componente Text exibir o texto Seu Nome, o componente InputField exibir a dica Digite um nome e o componente Button exibir o texto Conectar.
 
-e) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Photon Network Manager.
+e) Crie um GameObject vazio com o nome Photon Network Manager.
 
-f) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar os pacotes Photon.Pun, Photon.Realtime e UnityEngine.UI.
+f) Crie na pasta Scripts um script com o nome PhotonConnection. Ligue o script ao objeto Photon Network Manager.
 
-g) Declare uma variável InputField playerName, uma variável string gameVersion, uma variável string roomName e uma variável inteiro maxPlayers na classe PhotonConnection.
+g) Abra o script PhotonConnection.cs no VSCode. Faça a classe herdar de MonoBehaviourPunCallbacks e usar os pacotes Photon.Pun, Photon.Realtime e UnityEngine.UI.
 
-h) Implemente o método Awave alterando a propriedade AutomaticallySyncScene para true.
+h) Declare uma variável InputField input, uma variável Button button, uma variável string gameVersion, uma variável string roomName e uma variável byte maxPlayers na classe PhotonConnection.
+
+i) Implemente o método Awave alterando a propriedade AutomaticallySyncScene para true.
 
 void Awake() {
    PhotonNetwork.AutomaticallySyncScene = true;
 }
 
-i) Implemente o método Connect para fazer a conexão com o Photon Cloud. Se o PhotonNetwork não está conectado estabeleça uma conexão atribuindo o valor de gameVersion e chamando o método ConnectUsingSettings. Se estiver conectado, entre em uma sala através do método JoinRoom. Atribua a propriedade NickName o valor do componente InputField.
+j) Implemente o método Connect para fazer a conexão com o Photon Cloud. Se o PhotonNetwork não está conectado estabeleça uma conexão chamando o método ConnectUsingSettings. Lembre de alterar as propriedades NickName e GameVersion antes de conectar. 
 
 public void Connect() {   
-   if (!PhotonNetwork.IsConnected) {
-        PhotonNetwork.NickName =  playerName.text;
-        PhotonNetwork.GameVersion = this.gameVersion;
-	PhotonNetwork.ConnectUsingSettings();
-   } else {
-       PhotonNetwork.JoinRoom(this.roomName);
+   if (!PhotonNetwork.IsConnected)  {
+      input.interactable = false;
+      button.interactable = false;
+      PhotonNetwork.NickName = input.text;
+      PhotonNetwork.GameVersion = this.gameVersion;
+      PhotonNetwork.ConnectUsingSettings();
+      return;
    }
 }
 
-j) Implemente o método OnConnectedToMaster para entrar ou criar uma room após estabelecer a conexão com o Photon.
+k) Ainda no método Connect, se não tem sala iniciar o jogo crie uma chamando o método JoinOrCreateRoom com o valor de roomName e maxPlayers.
 
-public override void OnConnectedToMaster() {
-  RoomOptions options = new RoomOptions();
-  options.MaxPlayers = this.maxPlayers;
-  PhotonNetwork.JoinOrCreateRoom(this.roomName, options, TypedLobby.Default);
+if (PhotonNetwork.CountOfRooms == 0) {
+   button.interactable = false;
+   RoomOptions options = new RoomOptions();
+   options.MaxPlayers = this.maxPlayers;
+   PhotonNetwork.JoinOrCreateRoom(this.roomName, options, TypedLobby.Default);
+   return;
 }
 
-k) Implemente o método OnJoinedRoom para carregar a cena do jogo.
+l) Ainda no método Connect, entre na sala do jogo roomName chamando método JoinRoom.
+
+PhotonNetwork.JoinRoom(this.roomName);
+
+m) Implemente o método OnConnectedToMaster para desabilitar o botão trocando o texto de Conectar  para Jogar.
+
+public override void OnConnectedToMaster() {
+  button.interactable = true;
+  button.GetComponentInChildren<Text>().text = "Jogar";
+}
+
+n) Implemente o método OnJoinedRoom para carregar a cena do jogo.
 
 public override void OnJoinedRoom() {
    PhotonNetwork.LoadLevel("GameScene");
 }
 
-l) Na Unity associe o componente InputField a propriedade playerName do Photon Connection. Atribua valores para as propriedades GameVersion, RoomName e MaxPlayer.
+l) Na Unity associe o componente InputField a propriedade input e o componente Button a propriedade Button do Photon Connection. Atribua valores para as propriedades GameVersion, RoomName e MaxPlayer.
 
-m) Associe o evento On Click do componente Button ao componente Photon Manager para que seja executado o método PhotonConnection.Connect.
+m) Associe o evento On Click do componente Button ao componente Photon Network Manager para que seja executado o método PhotonConnection.Connect.
 
 
 
