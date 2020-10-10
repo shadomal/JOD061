@@ -1,0 +1,13 @@
+/home/iesb/GitHubProject/JOD061/Aulas/cliente/obj/Debug/netcoreapp3.1/cliente.csprojAssemblyReference.cache
+/home/iesb/GitHubProject/JOD061/Aulas/cliente/obj/Debug/netcoreapp3.1/cliente.AssemblyInfoInputs.cache
+/home/iesb/GitHubProject/JOD061/Aulas/cliente/obj/Debug/netcoreapp3.1/cliente.AssemblyInfo.cs
+/home/iesb/GitHubProject/JOD061/Aulas/cliente/obj/Debug/netcoreapp3.1/cliente.csproj.CoreCompileInputs.cache
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/bin/Debug/netcoreapp3.1/cliente
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/bin/Debug/netcoreapp3.1/cliente.deps.json
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/bin/Debug/netcoreapp3.1/cliente.runtimeconfig.json
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/bin/Debug/netcoreapp3.1/cliente.runtimeconfig.dev.json
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/bin/Debug/netcoreapp3.1/cliente.dll
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/bin/Debug/netcoreapp3.1/cliente.pdb
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/obj/Debug/netcoreapp3.1/cliente.dll
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/obj/Debug/netcoreapp3.1/cliente.pdb
+/home/iesb/GitHubProject/JOD061/Aulas/Cliente/obj/Debug/netcoreapp3.1/cliente.genruntimeconfig.cache
