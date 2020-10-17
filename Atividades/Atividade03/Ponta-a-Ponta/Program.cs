@@ -30,7 +30,7 @@ namespace JOD061
                 UdpClient par = new UdpClient();
                 par.EnableBroadcast = true;
 
-                Console.WriteLine("Por favor envie sua mensagem. Para sair, Precione ENTER");
+                Console.WriteLine("Por favor envie sua mensagem. Para sair, Pressione ENTER");
                 Console.WriteLine("> ");
                 string msg = Console.ReadLine();
 
