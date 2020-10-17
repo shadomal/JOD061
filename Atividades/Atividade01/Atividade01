@@ -1,5 +1,4 @@
-***- Diagnosticar a conexão de Internet utilizando comandos do sistema operacional.***
-
+- Diagnosticar a conexão de Internet utilizando comandos do sistema operacional.
 
 1 - Realizando ping na propria máquina.
 
@@ -39,7 +38,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 13 packets transmitted, 13 received, 0% packet loss, time 12388ms
 rtt min/avg/max/mdev = 0.031/0.039/0.057/0.007 ms
  
-***2-Levantar informações sobre IP, máscara de rede, gateway e servidor DNS do host***
+ 2-Levantar informações sobre IP, máscara de rede, gateway e servidor DNS do host
 
 iesb@mint:~$ route
 Tabela de Roteamento IP do Kernel
@@ -70,22 +69,26 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 3- Verificar a resolução de nomes para os hosts www.iesb.br e intranet.iesb.br
 
-iesb@mint:~$ traceroute www.iesb.br
-traceroute to www.iesb.br (54.174.194.96), 30 hops max, 60 byte packets
- 1  _gateway (10.0.2.2)  0.341 ms  0.325 ms  0.296 ms
- 2  * * *
- 3  * * *
- 4  * * *
- 5  * * *
- 6  * * *
- 7  * * *
- 8  * * *
- 9  * * *
-10  * * *
-11  * * *
-12  * *^C
+Tentativa de conexão com www.iesb.br
 
-Bloqueado pelo Sistema
+C:\Users\shado>nslookup www.iesb.br
+Servidor:  meuintelbras.local
+Address:  10.0.0.1
+
+Não é resposta autoritativa:
+Nome:    www.iesb.br
+Address:  54.174.194.96
+Tentativa conexão para intranet.iesb.br
+
+C:\Users\shado>nslookup  intranet.iesb.br
+Servidor:  meuintelbras.local
+Address:  10.0.0.1
+
+Não é resposta autoritativa:
+Nome:    intranet.iesb.br
+Address:  186.251.61.197
+
+
 
 Teste de conexão com o servidores do iesb;
 iesb@mint:~$ ping www.iesb.br
@@ -123,4 +126,74 @@ Resultados: Sem conexão.
 ***4 - Verificar rotas para os hosts www.iesb.br e intranet.iesb.br***
 
 
+Rastreando a rota para www.iesb.br [54.174.194.96]
+com no máximo 30 saltos:
 
+  1    <1 ms    <1 ms    <1 ms  meuintelbras.local [10.0.0.1]
+  2     2 ms     2 ms    <1 ms  101.67.5.1
+  3    38 ms    71 ms    17 ms  100.64.4.81
+  4     6 ms     2 ms     2 ms  201.87.240.81
+  5     2 ms     1 ms     2 ms  45-165-197-45.linkartelecom.net [45.165.197.45]
+  6     1 ms     2 ms     3 ms  200-146-236-018.xf-static.ctbcnetsuper.com.br [200.146.236.18]
+  7    30 ms    27 ms    27 ms  100.126.4.134
+  8    27 ms    34 ms    28 ms  100.126.0.133
+  9    21 ms    21 ms    25 ms  ae3-0.ptx-b.spo-piaf.algartelecom.com.br [170.84.32.6]
+ 10   119 ms   119 ms   119 ms  et-11-0-5-0.monet.border-b.mia.algartelecom.com.br [168.197.23.145]
+ 11   126 ms   122 ms   119 ms  99.83.66.26
+ 12   119 ms   123 ms   119 ms  52.93.37.93
+ 13   132 ms   120 ms   125 ms  52.93.37.28
+ 14     *        *        *     Esgotado o tempo limite do pedido.
+ 15     *        *        *     Esgotado o tempo limite do pedido.
+ 16     *        *        *     Esgotado o tempo limite do pedido.
+ 17     *        *        *     Esgotado o tempo limite do pedido.
+ 18     *        *        *     Esgotado o tempo limite do pedido.
+ 19   144 ms   143 ms   143 ms  52.93.133.148
+ 20     *        *        *     Esgotado o tempo limite do pedido.
+ 21     *        *        *     Esgotado o tempo limite do pedido.
+ 22     *        *        *     Esgotado o tempo limite do pedido.
+ 23     *        *        *     Esgotado o tempo limite do pedido.
+ 24     *        *        *     Esgotado o tempo limite do pedido.
+ 25     *        *        *     Esgotado o tempo limite do pedido.
+ 26     *        *        *     Esgotado o tempo limite do pedido.
+ 27     *        *        *     Esgotado o tempo limite do pedido.
+ 28     *        *        *     Esgotado o tempo limite do pedido.
+ 29     *        *        *     Esgotado o tempo limite do pedido.
+ 30   165 ms   191 ms   143 ms  52.93.28.212
+
+ C:\Users\shado>tracert intranet.iesb.br
+
+Rastreando a rota para intranet.iesb.br [186.251.61.197]
+com no máximo 30 saltos:
+
+  1    <1 ms    <1 ms    <1 ms  meuintelbras.local [10.0.0.1]
+  2     1 ms     1 ms     4 ms  101.67.5.1
+  3     6 ms     2 ms     2 ms  100.64.4.81
+  4     1 ms    <1 ms     1 ms  201.87.240.81
+  5     1 ms     2 ms     2 ms  as268716.brasilia.df.ix.br [200.192.110.19]
+  6     2 ms     2 ms     2 ms  45.171.103.234
+  7     *        *        *     Esgotado o tempo limite do pedido.
+  8     *        *        *     Esgotado o tempo limite do pedido.
+  9     *        *        *     Esgotado o tempo limite do pedido.
+ 10     *        *        *     Esgotado o tempo limite do pedido.
+ 11     *        *        *     Esgotado o tempo limite do pedido.
+ 12     *        *        *     Esgotado o tempo limite do pedido.
+ 13     *        *        *     Esgotado o tempo limite do pedido.
+ 14     *        *        *     Esgotado o tempo limite do pedido.
+ 15     *        *        *     Esgotado o tempo limite do pedido.
+ 16     *        *        *     Esgotado o tempo limite do pedido.
+ 17     *        *        *     Esgotado o tempo limite do pedido.
+ 18     *        *        *     Esgotado o tempo limite do pedido.
+ 19     *        *        *     Esgotado o tempo limite do pedido.
+ 20     *        *        *     Esgotado o tempo limite do pedido.
+ 21     *        *        *     Esgotado o tempo limite do pedido.
+ 22     *        *        *     Esgotado o tempo limite do pedido.
+ 23     *        *        *     Esgotado o tempo limite do pedido.
+ 24     *        *        *     Esgotado o tempo limite do pedido.
+ 25     *        *        *     Esgotado o tempo limite do pedido.
+ 26     *        *        *     Esgotado o tempo limite do pedido.
+ 27     *        *        *     Esgotado o tempo limite do pedido.
+ 28     *        *        *     Esgotado o tempo limite do pedido.
+ 29     *        *        *     Esgotado o tempo limite do pedido.
+ 30     *        *        *     Esgotado o tempo limite do pedido.
+
+Rastreamento concluído.
