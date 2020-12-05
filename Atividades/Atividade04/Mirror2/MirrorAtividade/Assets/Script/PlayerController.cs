@@ -40,17 +40,15 @@ class PlayerController : NetworkBehaviour
         else if (isClient) Debug.Log("Somente no servidor");
         */
 
-        if (!isLocalPlayer) return;
-
-        if (Input.GetKey(KeyCode.Space))
+        if (!isLocalPlayer)
         {
-            GameObject tiro = Instantiate(Shoot, Weapon.position, transform.rotation);
-            NetworkServer.Spawn(tiro);
+            float vert = Input.GetAxis("Vertical");
+            float horz = Input.GetAxis("Horizontal");
+            this.transform.Translate(Vector3.forward * vert * Movespeed * Time.deltaTime);
+            this.transform.localRotation *= Quaternion.AngleAxis(horz * Turnspeed * Time.deltaTime, Vector3.up);
+
         }
 
-        float vert = Input.GetAxis("Vertical");
-        float horz = Input.GetAxis("Horizontal");
-        this.transform.Translate(Vector3.forward * vert * Movespeed * Time.deltaTime);
-        this.transform.localRotation *= Quaternion.AngleAxis(horz * Turnspeed * Time.deltaTime, Vector3.up);
+
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7440121443629029405}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CanoArma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7406209265018278280}
   - component: {fileID: 7406209265018278281}
   - component: {fileID: 7406209265018278282}
+  - component: {fileID: 8054577478166079506}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -125,6 +126,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8054577478166079506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7406209265018278283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96eae5ecfd573b14291bd1dd847c1ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 4524530943695711735, guid: ee7d0dcb9b5ec3c419df9d3547d67259, type: 3}
+  canoArma: {fileID: 7440121443629029405}
+  municao: 0
+  pente: 0
 --- !u!1 &7406209265458543948
 GameObject:
   m_ObjectHideFlags: 0
